@@ -1,9 +1,13 @@
 import mongoose,{Schema,Document} from "mongoose"
+<<<<<<< HEAD
 import {IVideos} from "./videoModel"
 import { IUser } from "./userModel";
+=======
+import {IVideos} from "./videoModel.ts"
+import { IUser } from "./userModel.js";
+>>>>>>> 05f5290 (Update changes)
 
 export interface IComment extends Document {
-  id: string;
   parent: IComment | IVideos;
   child: IComment | null;
   content: string;
@@ -12,7 +16,6 @@ export interface IComment extends Document {
 }
 
 const CommentSchema: Schema<IComment> = new Schema({
-  id: { type: String, required: true, unique: true },
   parent: { type: mongoose.Schema.Types.Mixed, required: false }, // Can be a Comment or Video
   child: { type: mongoose.Schema.Types.Mixed, required: false },
   content: { type: String, required: true },
