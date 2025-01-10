@@ -9,6 +9,6 @@ app.get("/",(req,res) => {
     res.send("hello")
 })
 
-app.listen(3000,() => {
+app.listen(5173,() => {
     log("server is running on port:- 3000");
 })
