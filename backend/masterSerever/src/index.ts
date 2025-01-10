@@ -1,14 +1,14 @@
-import { log } from "console";
-import express from 'express'
+import app from "./app";
+import {connectDB} from './db/db';
+import 'dotenv/config'
 
-const app = express()
-const PORT = 5500
+const PORT = process.env.PORT || 9000;
 
-app.get("/",(req,res) => {
-    log("fll")
-    res.send("hello")
-})
-
-app.listen(3000,() => {
-    log("server is running on port:- 3000");
-})
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT} 👌`);
+    });
+    }
+).catch((err: any) => {
+    console.log(err);
+});
