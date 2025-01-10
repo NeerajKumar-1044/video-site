@@ -27,13 +27,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-<<<<<<< HEAD
     "node": "^22.13.0",
     "ts-node": "^10.9.2"
-=======
-    "mongoose": "^8.9.4",
-    "node": "^22.13.0"
->>>>>>> fd508f9 (Made models)
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
