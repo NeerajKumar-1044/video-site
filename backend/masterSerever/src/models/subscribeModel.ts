@@ -1,5 +1,5 @@
 import mongoose,{Document,Schema} from "mongoose"
-import {IUser} from "./userModel.ts"
+import {IUser} from "./userModel"
 
 interface ISubscribe extends Document {
   id: string;

@@ -1,5 +1,5 @@
 import mongoose,{Schema,Document} from 'mongoose'
-import {IUser} from './userModel.ts'
+import {IUser} from './userModel'
 
 export interface IVideos extends Document {
   id: string;
