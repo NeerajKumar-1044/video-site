@@ -1,5 +1,6 @@
 import mongoose,{Schema,Document} from "mongoose"
 import {IVideos} from "./videoModel"
+import { IUser } from "./userModel";
 
 export interface IComment extends Document {
   id: string;
@@ -7,7 +8,7 @@ export interface IComment extends Document {
   child: IComment | null;
   content: string;
   video: IVideos;
-  commentOwner: string;
+  commentOwner: IUser;
 }
 
 const CommentSchema: Schema<IComment> = new Schema({
