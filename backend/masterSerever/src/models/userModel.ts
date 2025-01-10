@@ -2,8 +2,6 @@ import mongoose, { Schema, Document } from "mongoose";
 import {IVideos} from "./videoModel"
 
 export interface IUser extends Document {
-  id: string;
-  createdAt: Date;
   username: string;
   email: string;
   fullname: string;
@@ -22,8 +20,6 @@ export interface IUser extends Document {
 }
 
 const UserSchema: Schema<IUser> = new Schema({
-  id: { type: String, required: true, unique: true },
-  createdAt: { type: Date, default: Date.now },
   username: { type: String, required: true },
   email: { type: String, required: true },
   fullname: { type: String, required: true },
