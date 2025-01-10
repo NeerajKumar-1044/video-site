@@ -5,11 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<< HEAD
-    "dev": "nodemon --watch 'src/*/.ts' --exec ts-node src/index.ts"
-=======
     "dev": "nodemon --watch 'src/*/.ts' --exec 'ts-node' src/index.ts"
->>>>>>> fd508f9 (Made models)
   },
   "repository": {
     "type": "git",
@@ -27,13 +23,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-<<<<<<< HEAD
     "node": "^22.13.0",
     "ts-node": "^10.9.2"
-=======
-    "mongoose": "^8.9.4",
-    "node": "^22.13.0"
->>>>>>> fd508f9 (Made models)
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
