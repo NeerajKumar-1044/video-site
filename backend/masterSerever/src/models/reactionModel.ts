@@ -1,7 +1,7 @@
 import mongoose,{Document,Schema} from "mongoose"
-import "IVideos" from "./videoModel.ts"
-import "IUser" from "./userModel.ts"
-import "IComment" from "./commentModel.ts"
+import {IVideos} from "./videoModel.ts"
+import {IUser} from "./userModel.ts"
+import {IComment} from "./commentModel.ts"
 
 interface IReaction extends Document {
   id: string;

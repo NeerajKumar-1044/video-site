@@ -1,5 +1,5 @@
 import mongoose,{Schema,Document} from "mongoose"
-import IVideos from "./videoModel.ts"
+import {IVideos} from "./videoModel.ts"
 
 export interface IComment extends Document {
   id: string;
