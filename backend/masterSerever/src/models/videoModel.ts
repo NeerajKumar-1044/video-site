@@ -21,6 +21,6 @@ const VideoSchema: Schema<IVideos> = new Schema({
   views: { type: Number, default: 0 },
   private: { type: Boolean, default: false },
   thumbnail: { type: String, required: false },
-});
+},{timestamps:true});
 
 export const Video = mongoose.model<IVideos>("Videos", VideoSchema);
