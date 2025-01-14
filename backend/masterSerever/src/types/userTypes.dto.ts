@@ -3,8 +3,13 @@ export interface UserDto {
     username?: string;
     email: string;
     password: string;
+    user:{
+        fullname:string;
+        username:string;
+        email:string;
+    }
 } 
-export interface UserRes {
+export interface UserResponce {
     message: string;
     statusCode: number;
     data?: any;

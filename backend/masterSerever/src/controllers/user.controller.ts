@@ -1,6 +1,6 @@
 import { User, IUser } from "../models/userModel";
 import { Request, Response } from "express";
-import { UserDto, UserRes } from "../types/userTypes.dto";
+import { UserDto, UserResponce } from "../types/userTypes.dto";
 
 const generateAccessAndRefreshToken = async (userid: string) => {
   try {
@@ -24,7 +24,7 @@ const generateAccessAndRefreshToken = async (userid: string) => {
   }
 }
 
-const registerUser = async (req: Request<{}, {}, UserDto>, res: Response<UserRes>): Promise<any> => {
+const registerUser = async (req: Request<{}, {}, UserDto>, res: Response<UserResponce>): Promise<any> => {
   // TODO: change any to Response<UserRes> when creating routes
   try {
     const { fullname, username, email, password } = req.body;
@@ -46,7 +46,7 @@ const registerUser = async (req: Request<{}, {}, UserDto>, res: Response<UserRes
   }
 };
 
-const loginUser = async (req: Request<{}, {}, UserDto>, res: Response<UserRes>): Promise<any> => {
+const loginUser = async (req: Request<{}, {}, UserDto>, res: Response<UserResponce>): Promise<any> => {
   try {
     const { email, password } = req.body
     const user = await User.findOne({ email }) as IUser | null
@@ -80,26 +80,28 @@ const loginUser = async (req: Request<{}, {}, UserDto>, res: Response<UserRes>):
 }
 
 const logoutUser = async (req: Request, res: Response): Promise<any> => {
-  // TODO:Implement req.user in middleware
 
-  // await User.findByIdAndUpdate(
-  //   req.user._id,
-  //   {
-  //     $unset: {
-  //       refreshToken: 1
-  //     }
-  //   },
-  //   {
-  //     new: true
-  //   }
-  // )
-  // const options = {
-  //   httpOnly: true,
-  //   secure: true
-  // }
-  // return res.status(200)
-  //   .clearCookie("accessToken", options)
-  //   .clearCookie("refreshToken", options)
-  //   .json()
+  if(!req.user) {
+    return res.status(401).json({ message: "Unauthorized access" })
+  }
+  await User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $unset: {
+        refreshToken: 1
+      }
+    },
+    {
+      new: true
+    }
+  )
+  const options = {
+    httpOnly: true,
+    secure: true
+  }
+  return res.status(200)
+    .clearCookie("accessToken", options)
+    .clearCookie("refreshToken", options)
+    .json()
 }
 export { registerUser, loginUser }
